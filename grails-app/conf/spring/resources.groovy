@@ -1,3 +1,8 @@
-// Place your Spring DSL code here
+package spring
+
+import auth.UserPasswordEncoderListener
+
 beans = {
+    userPasswordEncoderListener(UserPasswordEncoderListener)
+
 }

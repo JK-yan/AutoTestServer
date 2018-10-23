@@ -78,6 +78,20 @@ grails:
                 scriptlets: html
                 taglib: none
                 staticparts: none
+#    plugin:
+#      springsecurity:
+#        controllerAnnotations:
+#          chainMap:
+#            '/api/**': 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter'
+#            '/**': 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'
+#        rest:
+#          logout:
+#            endpointUrl: '/api/logout'
+#          # ja é default
+#          token:
+#            validation:
+#              useBearerToken: false
+#              headerName: 'X-Auth-Token'
 endpoints:
     jmx:
         unique-names: true

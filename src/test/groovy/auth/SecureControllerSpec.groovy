@@ -1,9 +1,9 @@
-package autotestserver
+package auth
 
-import grails.testing.services.ServiceUnitTest
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class UserServiceSpec extends Specification implements ServiceUnitTest<UserService>{
+class SecureControllerSpec extends Specification implements ControllerUnitTest<SecureController> {
 
     def setup() {
     }

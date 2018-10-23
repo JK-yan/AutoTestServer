@@ -1,16 +1,33 @@
 package auth
 
-class User {
-    String userId
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
+@EqualsAndHashCode(includes='username')
+@ToString(includes='username', includeNames=true, includePackage=false)
+class User implements Serializable {
+
+    private static final long serialVersionUID = 1
+
+    String username
     String password
-    Date dateCreated
-    Date lastUpdated
-//    String email
-//    String phone
-//    String address
+    boolean enabled = true
+    boolean accountExpired
+    boolean accountLocked
+    boolean passwordExpired
+
+    Set<Role> getAuthorities() {
+        (UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>
+    }
 
     static constraints = {
-        userId(size: 2..10,blank: false,unique: true,)
-        password(size: 2..10,blank: false)
+        password nullable: false, blank: false, password: true
+        username nullable: false, blank: false, unique: true
+    }
+
+    static mapping = {
+	    password column: '`password`'
     }
 }
